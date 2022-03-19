@@ -1,0 +1,90 @@
+main > .container {
+  padding: 60px 15px 0;
+  margin-bottom: 5rem;
+}
+.sticky-footer {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+:root {
+  --primary-color: #1d5888;
+  --secondary-color: #ff993b;
+  --dark-color: #292929;
+  --white-color: #dff3e4;
+}
+
+body {
+  color: var--(--dark-color);
+}
+
+nav {
+  background-color: var(--dark-color);
+}
+
+footer {
+  background-color: var(--dark-color);
+  padding-right: 0.5rem;
+}
+
+footer .social > a {
+  color: var(--white-color);
+  opacity: 0.75;
+}
+
+footer .social > a:hover {
+  opacity: 0.9;
+  color: #0e76a8;
+}
+
+footer .gitlogo > a {
+  color: var(--white-color);
+  opacity: 0.75;
+}
+
+footer .gitlogo > a:hover {
+  opacity: 0.9;
+  color: white;
+}
+
+.infoText {
+  font-size: 102%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary-color);
+}
+
+.bsicon {
+  color: #563d7c;
+}
+
+.jsicon {
+  color: #f0db4f;
+}
+
+.htmlicon {
+  color: #f06529;
+}
+
+.cssicon {
+  color: #264de4;
+}
+
+.checklist > li i {
+  color: #0e76a8;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+}
