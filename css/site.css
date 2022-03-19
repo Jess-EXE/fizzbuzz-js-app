@@ -82,6 +82,19 @@ h6 {
   color: #0e76a8;
 }
 
+.Fizz {
+  color: #0e76a8;
+}
+
+.Buzz {
+  color: green;
+}
+
+.FizzBuzz {
+  color: red;
+  font-weight: bolder;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   white-space: pre-wrap;

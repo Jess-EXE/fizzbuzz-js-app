@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Jesse Chase</title>
+    <title>FizzBuzz: A Coding Project By Jesse Chase</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +24,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="/img/toplogo.png" alt="Jesse Chase Logo" height="40" class="d-inline-block alight-text-top"> | APP NAME</a>
+        <a class="navbar-brand" href="#"><img src="/img/toplogo.png" alt="Jesse Chase Logo" height="40" class="d-inline-block alight-text-top"> | FizzBuzz</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -56,22 +56,123 @@
     <div class="mt-5"><h1></h1></div>
     <div class="container py-4 px-5 mt-5">
         <div class="mt-4"><h1></h1></div>
-        <h2 class="border-1 border-bottom border-dark">The Code for APP NAME</h2>
+        <h2 class="border-1 border-bottom border-dark">The Code for FizzBuzz</h2>
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col col-lg-8">
                 <pre class="line-numbers"><code class="language-javascript">
-                    // Call Hello World
-                    function HelloWorld() {
-                    alert("Hello World!");
-}
+                    // Get user input for fizz and buzz values
+                    // Controller function
+                    
+                    function getValues() {
+                    
+                        let fizzValue = document.getElementById("fizz").value;
+                        let buzzValue = document.getElementById("buzz").value;
+                    
+                        // Parse for integers
+                    
+                        fizzValue = parseInt(fizzValue);
+                        buzzValue = parseInt(buzzValue);
+                    
+                        // If integers, continue
+                    
+                        if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue)) {
+                    
+                            let results = fizzBuzz(fizzValue, buzzValue);
+                    
+                            displayResults(results);
+                    
+                        } else {
+                    
+                            alert("You did not enter an integer!");
+                        }
+                    }
+                    
+                    // Logic Function
+                    
+                    function fizzBuzz(fizzValue, buzzValue) {
+                    
+                        let results = [];
+                    
+                        // Loop through 1 - 100, using conditional logic to determine FizzBuzz
+                    
+                        for (let i = 1; i <= 100; i++) {
+                    
+                            if (i % fizzValue == 0 && i % buzzValue == 0) {
+                    
+                                results.push("FizzBuzz");
+                    
+                            } else if (i % fizzValue == 0) {
+                    
+                                results.push("Fizz");
+                    
+                            }  else if (i % buzzValue == 0) {
+                    
+                                results.push("Buzz");
+                    
+                            } else {
+                    
+                                results.push(i);
+                    
+                            }
+                        }
+                    
+                        return results;
+                    
+                    }
+                    
+                    // Display results
+                    // View function
+                    
+                    function displayResults(resultsArray) {
+                    
+                        let tableBody = document.getElementById("results");
+                    
+                        let templateRow = document.getElementById("fbTemplate");
+                    
+                        // Make sure table is clear
+                    
+                        tableBody.innerHTML= "";
+                    
+                        for (let i = 0; i < resultsArray.length; i += 5) {
+                    
+                            let tableRow = document.importNode(templateRow.content, true);
+                    
+                            // Get the <td> elements to put in the array
+                            let rowCols = tableRow.querySelectorAll("td");
+                    
+                            rowCols[0].classList.add(resultsArray[i]);
+                            rowCols[0].textContent = resultsArray[i];
+                    
+                            rowCols[1].classList.add(resultsArray[i + 1]);
+                            rowCols[1].textContent = resultsArray[i + 1];
+                    
+                            rowCols[2].classList.add(resultsArray[i + 2]);
+                            rowCols[2].textContent = resultsArray[i + 2];
+                    
+                            rowCols[3].classList.add(resultsArray[i + 3]);
+                            rowCols[3].textContent = resultsArray[i + 3];
+                    
+                            rowCols[4].classList.add(resultsArray[i + 4]);
+                            rowCols[4].textContent = resultsArray[i + 4];
+                    
+                            tableBody.appendChild(tableRow);
+                        }
+                    
+                    }
                 </code></pre>
             </div>
             <div class="col col-lg-4 mt-2">
-                <p>The code is structured in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a funciton that displays an alert with the message of "Hello World"</p>
+                <h5>getValues()</h5>
+                <p>First I assign the user's input to the variable <i>fizzValue</i> and <i>buzzValue</i>. Then I use <strong>parseInt()</strong> along with some conditional logic to ensure the rest of the code only runs if the user entered valid integers. If the user input is valid, then a <i>results</i> variable is declared with the results from the called function <strong>fizzBuzz()</strong>, which is called with the arguments <i>fizzValue</i> and <i>buzzValue</i> passed into it. Once that is finished, the function <strong>displayResults()</strong> is called with the variable <i>results</i> as it's argument.</p>
+                <h5>fizzBuzz()</h5>
+                <p>
+                    This function handles the logic. First, I declare an empty array <i>results</i>. Then, using a combination of a for loop and conditional logic, I iterate through the numbers 1 - 100 inclusive, applying the FizzBuzz logic to each iteration, and pushing it to <i>results</i>. This function then returns that array.
+                </p>
+                <h5>displayResults()</h5>
+                <p>
+                    The majority of the DOM manipulation is handled by this function. In the app.html document I inserted a template tag that includes a tr tag with 5 td tags. This template has an ID of templateRow. Using this, and a for loop, I set a variable <i>tableRow</i> to the content of that template row using document.importNode. I will be modifying the contents of the template and adding it to the HTML with every iteration of this loop. I know there are 5 rows, so each iteration of this for loop will add 5 to <i>'i'</i>. Using that knowledge, I set each table data tag equal to the result of each iteration of the <i>resultsArray</i>. It should also be known that my css stylesheet includes styling for 'Fizz', 'Buzz', and 'FizzBuzz' - so I am also adding the result to the class list of each table data tag for additional styling. At the end of each iteration, I append the results to the HTML until the loop is finished and we have our results.
+                </p>
             </div>
-
         </div>
     </div>
 </main>
